@@ -118,6 +118,76 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &840086490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 840086492}
+  - component: {fileID: 840086491}
+  m_Layer: 0
+  m_Name: The Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &840086491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840086490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7e3a1bac9704046921de317e4b4e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelFileName: Level-1-2.png
+  colorToPrefab:
+  - color:
+      serializedVersion: 2
+      rgba: 4278190080
+    prefab: {fileID: 116094, guid: 6cd739852113823489a8311c54156ac9, type: 3}
+  - color:
+      serializedVersion: 2
+      rgba: 4278255615
+    prefab: {fileID: 193220, guid: 4452304ede9b69b4db8ef1d677b45639, type: 3}
+  - color:
+      serializedVersion: 2
+      rgba: 4278255360
+    prefab: {fileID: 180128, guid: f0187a43815b60745a3841ed349ab2a2, type: 3}
+  - color:
+      serializedVersion: 2
+      rgba: 4294901760
+    prefab: {fileID: 173084, guid: 4e8b994a281a3ff4fa3102e3a4c3fea9, type: 3}
+  - color:
+      serializedVersion: 2
+      rgba: 4278190335
+    prefab: {fileID: 103682, guid: 3e707ed2970f72f4fa722591811337ed, type: 3}
+  - color:
+      serializedVersion: 2
+      rgba: 4278226431
+    prefab: {fileID: 8385503181849967471, guid: 2632923a4cbe0417797a62074f6354cd, type: 3}
+--- !u!4 &840086492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840086490}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 29.017212, y: 5.198085, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856252508
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,3 +285,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1856252511}
+  - {fileID: 840086492}
