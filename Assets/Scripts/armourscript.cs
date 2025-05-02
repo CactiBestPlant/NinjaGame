@@ -53,18 +53,15 @@ public class armourscript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            armour += 1;
-            UpdateArmourText();
+            armour += 1; // Update the armour variable
+            UpdateArmourText(); // Update the TextMeshPro text to reflect the new armour value
             Debug.Log("Armour: " + armour);
         }
     }
-
+    
     void UpdateArmourText()
     {
-        if (armourText != null)
-        {
-            armourText.text = "Armour: " + armour.ToString();
-        }
+        armourText.text = "Armour: " + armour; // Update the TextMeshProUGUI text
     }
 }
 
