@@ -122,8 +122,10 @@ GameObject:
   - component: {fileID: 8447977035555912616}
   - component: {fileID: 1779346489392483852}
   - component: {fileID: 1914377576693117475}
+  - component: {fileID: -4373005057823402030}
+  - component: {fileID: -6109091553280968682}
   m_Layer: 0
-  m_Name: Player Ninja
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,6 +238,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-4373005057823402030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d355c2a83262a42caa04bede29435ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armour: 0
+--- !u!114 &-6109091553280968682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51646fc9acafa44eaa999d55a7bef2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6734205709435017409
 GameObject:
   m_ObjectHideFlags: 0

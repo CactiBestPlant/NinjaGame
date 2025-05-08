@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 429320}
   - component: {fileID: 21238666}
   - component: {fileID: 4106664295121916814}
-  - component: {fileID: 684571601159241910}
   m_Layer: 9
   m_Name: Armour
   m_TagString: Item
@@ -125,16 +124,3 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.009399219}
   m_Radius: 0.17746797
---- !u!114 &684571601159241910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d355c2a83262a42caa04bede29435ada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armour: 0

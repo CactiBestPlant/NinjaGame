@@ -3,65 +3,73 @@ using TMPro;
 
 public class armourscript : MonoBehaviour
 {
-    float TMParmourinst;
-    public float armour;
+    public float armour; // Player's armour value
     private TextMeshProUGUI armourText;
+    private int TMParmourinst;
 
     void Start()
     {
         armour = 0;
 
-        // Dynamically create a new GameObject for the TextMeshPro UI
-        GameObject textObject = new GameObject("ArmourText");
-        textObject.transform.SetParent(GameObject.Find("Canvas").transform); // Attach to Canvas
+        // Check if a TextMeshProUGUI instance already exists
+        TMParmourinst = FindObjectsOfType<TextMeshProUGUI>().Length;
+        if (TMParmourinst == 0)
+        {
+            // Create a new TextMeshProUGUI object if none exists
+            GameObject textObject = new GameObject("ArmourText");
+            textObject.transform.SetParent(GameObject.Find("Canvas").transform); // Attach to Canvas
 
-        // Add TextMeshProUGUI component to the new GameObject
-        armourText = textObject.AddComponent<TextMeshProUGUI>();
+            armourText = textObject.AddComponent<TextMeshProUGUI>();
+            armourText.fontSize = 18;
+            armourText.alignment = TextAlignmentOptions.Center;
+            armourText.rectTransform.sizeDelta = new Vector2(300, 100);
+            armourText.rectTransform.anchorMin = new Vector2(0, 1);
+            armourText.rectTransform.anchorMax = new Vector2(0, 1);
+            armourText.rectTransform.anchoredPosition = new Vector2(50, -50);
 
-        // Configure the TextMeshPro properties
-        armourText.fontSize = 18;
-        armourText.alignment = TextAlignmentOptions.Center;
-        armourText.rectTransform.sizeDelta = new Vector2(300, 100); // Set size
-        armourText.rectTransform.anchorMin = new Vector2(0, 1);
-        armourText.rectTransform.anchorMax = new Vector2(0, 1);
-        armourText.rectTransform.anchoredPosition = new Vector2(50, -50); // 50 units right and 50 units down from the top-left
-
-        UpdateArmourText();
+            UpdateArmourText();
+        }
+        else
+        {
+            // If a TextMeshProUGUI instance exists, use it
+            armourText = FindObjectOfType<TextMeshProUGUI>();
+        }
     }
 
     void Update()
     {
         // Constantly check how many TextMeshProUGUI objects exist
         int textMeshProCount = FindObjectsOfType<TextMeshProUGUI>().Length;
-        if (TMParmourinst > 1)
+        if (textMeshProCount > 1)
         {
-        Debug.Log("Number of TextMeshProUGUI objects: " + textMeshProCount);
-        }
-        TMParmourinst = textMeshProCount;
-        if (TMParmourinst > 1)
-        {
+            Debug.Log("Number of TextMeshProUGUI objects: " + textMeshProCount);
+
+            // Destroy extra TextMeshProUGUI objects, keeping only the first one
             TextMeshProUGUI[] textObjects = FindObjectsOfType<TextMeshProUGUI>();
             for (int i = 1; i < textObjects.Length; i++)
             {
                 Destroy(textObjects[i].gameObject);
             }
         }
+        TMParmourinst = textMeshProCount;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Item"))
         {
-            Destroy(gameObject);
-            armour += 1; // Update the armour variable
-            UpdateArmourText(); // Update the TextMeshPro text to reflect the new armour value
+            Destroy(other.gameObject); // Destroy the armour pickup
+            armour += 1; // Increment the armour variable
+            UpdateArmourText(); // Update the TextMeshPro text
             Debug.Log("Armour: " + armour);
         }
     }
-    
+
     void UpdateArmourText()
     {
-        armourText.text = "Armour: " + armour; // Update the TextMeshProUGUI text
+        if (armourText != null)
+        {
+            armourText.text = "Armour: " + armour; // Update the TextMeshProUGUI text
+        }
     }
 }
-

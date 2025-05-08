@@ -46,7 +46,7 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] public float CrouchSpeedMultiplier { get; private set; } = 0.25f; // Half of WalkState's 0.5 multiplier
 
 
-    private PlayerBaseState currentState;
+    public PlayerBaseState currentState;
 
     // State registry for extensibility
     private Dictionary<string, PlayerBaseState> stateRegistry = new Dictionary<string, PlayerBaseState>();
