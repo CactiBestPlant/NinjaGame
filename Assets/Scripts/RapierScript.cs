@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RapierScript : MonoBehaviour
 {
+    public GameObject rapier;
     float lungeDist;
     float lungeactive;
     public Vector3 playerpos;
@@ -35,8 +36,10 @@ public class RapierScript : MonoBehaviour
 
        if(lungeactive==1)
        {
-        transform.Translate(movement*5*Time.deltaTime);
-        lungeDist-=1*Time.deltaTime;
+        //transform.Translate(movement*5*Time.deltaTime);
+        //lungeDist-=1*Time.deltaTime; 
+        //Quaternion spawnRotation = Quaternion.identity;
+        //instantiate (rapier, playerpos+1, spawnRotation);
         if(lungeDist<=0)
         {
             lungeactive=0;
@@ -47,7 +50,7 @@ public class RapierScript : MonoBehaviour
         lungeDist=0;
        }
 
-       if(Input.GetKeyDown(KeyCode.Return) && lungeDist<1.5)
+       if(Input.GetKeyDown(KeyCode.E) && lungeDist<1.5)
        {
         print("Check Stop");
         lungeactive=0;

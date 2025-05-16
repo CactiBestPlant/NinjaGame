@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class snailscript : MonoBehaviour
 {
+  float back;
     float ehealth;
     Vector3 startpos;
     Vector3 currpos;
@@ -11,6 +12,7 @@ public class snailscript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+      back=0;
         rapierScript = FindObjectOfType<RapierScript>();
         ehealth = 100;
         startpos = transform.position;
@@ -25,12 +27,36 @@ public class snailscript : MonoBehaviour
         Vector3 playerpos = rapierScript.playerpos;
       }  
       transform.Translate(emove * Time.deltaTime);
+
+      if (rapierScript.playerpos.x > currpos.x + 12 || rapierScript.playerpos.y > currpos.y + 12)
+      {
+        back = 1;
+      }
+
+      if (rapierScript.playerpos.x < currpos.x - 12 || rapierScript.playerpos.y < currpos.y - 12)
+      {
+        back = 1;
+      }
+
+      if (back==1)
+      {
+        if (currpos.x > startpos.x)
+        {
+            emove = new Vector3(-1, 0, 0);
+        }
+        else
+        {
+            emove = new Vector3(1, 0, 0);
+        }
+      }
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            print("check trigger");
+          back= 0;
+            print(rapierScript.playerpos-currpos);
            if (rapierScript.playerpos.x > currpos.x)
            {
                emove = new Vector3(1, 0, 0);
