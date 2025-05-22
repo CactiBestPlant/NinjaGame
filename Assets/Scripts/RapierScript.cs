@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RapierScript : MonoBehaviour
 {
+    public float checkrapout;
+    float rapinst;
     public GameObject rapier;
     float lungeDist;
     float lungeactive;
@@ -10,12 +12,14 @@ public class RapierScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        lungeactive=0; 
+        checkrapout = 0;
+        lungeactive =0; 
     }
 
     // Update is called once per frame
     void Update()
     {
+       int rapinst = GameObject.FindGameObjectsWithTag("weapon").Length; // Correct method
         playerpos = transform.position;
         Vector3 movement = new Vector3(lungeDist, 0, 0);
        if(Input.GetMouseButton(0))
@@ -36,25 +40,37 @@ public class RapierScript : MonoBehaviour
 
        if(lungeactive==1)
        {
-        //transform.Translate(movement*5*Time.deltaTime);
-        //lungeDist-=1*Time.deltaTime; 
-        //Quaternion spawnRotation = Quaternion.identity;
-        //instantiate (rapier, playerpos+1, spawnRotation);
-        if(lungeDist<=0)
-        {
-            lungeactive=0;
-        }
+        transform.Translate(movement*5*Time.deltaTime);
+        lungeDist-=1*Time.deltaTime;
+        if (lungeDist <= 0)
+            {
+                    lungeactive = 0;
+            }
        }
        else
        {
         lungeDist=0;
        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            checkrapout = 1;
+            if (rapinst < 1)
+            {
 
-       if(Input.GetKeyDown(KeyCode.E) && lungeDist<1.5)
-       {
-        print("Check Stop");
-        lungeactive=0;
-       }
+                Quaternion spawnRotation = Quaternion.identity;
+                Instantiate(rapier, playerpos, spawnRotation);
+            }
+        }
+        else
+        {
+            checkrapout = 0;
+        }
+
+       if (Input.GetKeyDown(KeyCode.E) && lungeDist < 1.5)
+        {
+            print("Check Stop");
+            lungeactive = 0;
+        }
 
     }
 

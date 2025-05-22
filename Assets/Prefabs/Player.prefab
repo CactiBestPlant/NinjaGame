@@ -263,6 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51646fc9acafa44eaa999d55a7bef2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rapier: {fileID: 1686103302951476606, guid: 654a5626da9904cb58edc516bd480ede, type: 3}
+  playerpos: {x: 0, y: 0, z: 0}
 --- !u!1 &6734205709435017409
 GameObject:
   m_ObjectHideFlags: 0
