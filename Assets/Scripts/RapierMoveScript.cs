@@ -11,26 +11,36 @@ public class RapierMoveScript : MonoBehaviour
     {
         if (target != null)
         {
-            offset = transform.position - target.position+ new Vector3(1, 0, 0);
+            // Calculate the initial offset between the rapier and the player
+            offset = transform.position - target.position + new Vector3(1, 0, 0);
+        }
+        else
+        {
+            Debug.LogError("Target (Player) is not assigned!");
         }
 
         // Find the RapierScript component on the same GameObject or another GameObject
         rapierScript = FindObjectOfType<RapierScript>();
-        if (rapierScript == null)
-        {
-            Debug.LogError("RapierScript instance not found!");
-        }
     }
 
     void Update()
     {
+        if (rapierScript != null && rapierScript.checkrapout == 0)
+        {
+            Destroy(gameObject);
+        }
+        if (target != null && transform.parent == null) // If not parented, update position manually
+        {
+            transform.position = target.position + offset;
+        }
         if (rapierScript.checkrapout == 0)
         {
             Destroy(gameObject);
         }
-        if (rapierScript != null)
+        if (target != null)
         {
-            transform.position = Vector3.Lerp( transform.position, target.position + offset, Time.deltaTime * 15f);
+            transform.position = target.position + offset;
         }
+        
     }
 }
