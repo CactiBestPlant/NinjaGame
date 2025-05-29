@@ -57,7 +57,7 @@ public class RapierScript : MonoBehaviour
         {
             lungeDist = 0;
         }
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.V))
         {
             checkrapout = 1;
             if (rapinst < 1)
