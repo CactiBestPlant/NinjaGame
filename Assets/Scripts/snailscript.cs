@@ -15,9 +15,8 @@ public class snailscript : MonoBehaviour
     {
       eioframe = 0;
       back =0;
-        rapierScript = FindObjectOfType<RapierScript>();
-        ehealth = 100;
-        startpos = transform.position;
+      ehealth = 100;
+      startpos = transform.position;
     }
 
     // Update is called once per frame
