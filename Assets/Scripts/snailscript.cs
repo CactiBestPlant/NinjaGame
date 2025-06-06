@@ -3,16 +3,18 @@ using UnityEngine;
 public class snailscript : MonoBehaviour
 {
   float back;
-    float ehealth;
+    public float ehealth;
     Vector3 startpos;
     Vector3 currpos;
     Vector3 emove;
+  public float eioframe;
     private RapierScript rapierScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-      back=0;
+      eioframe = 0;
+      back =0;
         rapierScript = FindObjectOfType<RapierScript>();
         ehealth = 100;
         startpos = transform.position;
@@ -21,6 +23,11 @@ public class snailscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      if (ehealth <= 0)
+      {
+        Destroy(gameObject);
+      }
+    eioframe -= 1;
         currpos = transform.position;
       if (rapierScript != null)
       {
@@ -51,20 +58,22 @@ public class snailscript : MonoBehaviour
       }
 
     }
-    void OnTriggerEnter2D(Collider2D other)
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.gameObject.CompareTag("Player"))
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-          back= 0;
-            print(rapierScript.playerpos-currpos);
-           if (rapierScript.playerpos.x > currpos.x)
-           {
-               emove = new Vector3(1, 0, 0);
-           }
-              else
-              {
-                emove = new Vector3(-1, 0, 0);
-              }
-        }
+      back = 0;
+      print(rapierScript.playerpos - currpos);
+      if (rapierScript.playerpos.x > currpos.x)
+      {
+        emove = new Vector3(1, 0, 0);
+      }
+      else
+      {
+        emove = new Vector3(-1, 0, 0);
+      }
     }
+  }
+  
+    
 }

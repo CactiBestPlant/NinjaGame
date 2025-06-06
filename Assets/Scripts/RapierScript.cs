@@ -30,7 +30,6 @@ public class RapierScript : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            print("check rapier active");
             lungeDist += 1 * Time.deltaTime;
         }
 
@@ -84,18 +83,12 @@ public class RapierScript : MonoBehaviour
             stopstop = 0;
         }
 
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("weapon"))
+        if (Input.GetKeyDown(KeyCode.F)) // Replace 'F' with your desired button
         {
-            weaponstop = 1;
-            stopstop = 1;
-        }
-        else
-        {
-            weaponstop = 0;
+            // Flip the player's scale along the x-axis
+            Vector3 currentScale = transform.localScale;
+            currentScale.x *= -1; // Invert the x-axis scale
+            transform.localScale = currentScale;
         }
     }
-
 }

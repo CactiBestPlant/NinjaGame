@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 131768663205758691}
   - component: {fileID: -8065097224047745708}
   - component: {fileID: 3714992755339022083}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rapier
   m_TagString: weapon
   m_Icon: {fileID: 0}
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364b246f81fb84b579f63511c2cf05f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 476504, guid: f0187a43815b60745a3841ed349ab2a2, type: 3}
 --- !u!61 &3714992755339022083
 BoxCollider2D:
   m_ObjectHideFlags: 0
