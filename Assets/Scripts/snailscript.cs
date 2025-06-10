@@ -13,49 +13,61 @@ public class snailscript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-      eioframe = 0;
-      back =0;
-      ehealth = 100;
-      startpos = transform.position;
+        eioframe = 0;
+        back = 0;
+        ehealth = 100;
+        startpos = transform.position;
+
+        // Dynamically find and assign the RapierScript instance
+        rapierScript = FindObjectOfType<RapierScript>();
+        if (rapierScript == null)
+        {
+            Debug.LogError("RapierScript not found in the scene! Make sure it exists.");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-      if (ehealth <= 0)
-      {
-        Destroy(gameObject);
-      }
-    eioframe -= 1;
-        currpos = transform.position;
-      if (rapierScript != null)
-      {
-        Vector3 playerpos = rapierScript.playerpos;
-      }  
-      transform.Translate(emove * Time.deltaTime);
-
-      if (rapierScript.playerpos.x > currpos.x + 12 || rapierScript.playerpos.y > currpos.y + 12)
-      {
-        back = 1;
-      }
-
-      if (rapierScript.playerpos.x < currpos.x - 12 || rapierScript.playerpos.y < currpos.y - 12)
-      {
-        back = 1;
-      }
-
-      if (back==1)
-      {
-        if (currpos.x > startpos.x)
+        if (ehealth <= 0)
         {
-            emove = new Vector3(-1, 0, 0);
+            Destroy(gameObject);
+        }
+
+        eioframe -= 1;
+        currpos = transform.position;
+
+        // Check if rapierScript is null before accessing it
+        if (rapierScript != null)
+        {
+            if (rapierScript.playerpos.x > currpos.x + 12 || rapierScript.playerpos.y > currpos.y + 12)
+            {
+                back = 1;
+            }
+
+            if (rapierScript.playerpos.x < currpos.x - 12 || rapierScript.playerpos.y < currpos.y - 12)
+            {
+                back = 1;
+            }
         }
         else
         {
-            emove = new Vector3(1, 0, 0);
+            Debug.LogWarning("rapierScript is null in snailscript!");
         }
-      }
 
+        if (back == 1)
+        {
+            if (currpos.x > startpos.x)
+            {
+                emove = new Vector3(-1, 0, 0);
+            }
+            else
+            {
+                emove = new Vector3(1, 0, 0);
+            }
+        }
+
+        transform.Translate(emove * Time.deltaTime);
     }
   void OnTriggerEnter2D(Collider2D other)
   {

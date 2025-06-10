@@ -11,10 +11,12 @@ public class RapierScript : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public float weaponstop;
     float stopstop;
+    public float Rappos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Rappos = 0;
         weaponstop = 0;
         checkrapout = 0;
         lungeactive = 0;
@@ -89,6 +91,7 @@ public class RapierScript : MonoBehaviour
             Vector3 currentScale = transform.localScale;
             currentScale.x *= -1; // Invert the x-axis scale
             transform.localScale = currentScale;
+            Rappos = 1; // Set the position flag to indicate the flip
         }
     }
 }
